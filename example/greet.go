@@ -1,4 +1,4 @@
-package greet
+package example
 
 import "fmt"
 

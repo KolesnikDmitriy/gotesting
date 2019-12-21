@@ -1,12 +1,11 @@
-package greet
+package example
 
 import "fmt"
 
-func ExampleHello() {
+func ExampleSayHello() {
 	greeting := SayHello("Dima")
 
 	fmt.Println(greeting)
-
 	// Output:
 	// Hello, Dima!
 }
