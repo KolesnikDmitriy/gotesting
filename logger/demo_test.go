@@ -22,7 +22,7 @@ func (fl *fakeLogger) Printf(format string, v ...interface{}) {
 func TestDemoV3(t *testing.T) {
 	var fl fakeLogger
 	DemoV3(fl.Println)
-	want := "error in doSomeThings():"
+	want := "error at some things"
 	got := fl.sb.String()
 	if !strings.Contains(got, want) {
 		t.Errorf("Log = %q; want substing %q\n", got, want)
@@ -32,7 +32,7 @@ func TestDemoV3(t *testing.T) {
 func TestDemoV4(t *testing.T) {
 	var fl fakeLogger
 	DemoV4(&fl)
-	want := "error in doSomeThings():"
+	want := "error at some things"
 	got := fl.sb.String()
 	if !strings.Contains(got, want) {
 		t.Errorf("Log = %q; want substing %q\n", got, want)

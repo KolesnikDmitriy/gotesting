@@ -14,7 +14,7 @@ func DemoV1() {
 	}
 }
 
-func DemoV2(logger log.Logger) {
+func DemoV2(logger *log.Logger) {
 	err := doSomeThings()
 	if err != nil {
 		logger.Println("error in doSomeThings():", err)
@@ -61,7 +61,6 @@ func (t Thing) DemoV5() {
 }
 
 func doSomeThings() error {
-	//return nil
 	return errors.New("error at some things")
 }
 
