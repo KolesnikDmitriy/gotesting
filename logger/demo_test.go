@@ -52,3 +52,17 @@ func TestDemoV5(t *testing.T) {
 		t.Errorf("Log = %q; want substing %q\n", got, want)
 	}
 }
+
+func TestDemoV7(t *testing.T) {
+	var sb strings.Builder
+	logger := log.New(&sb, "", 0)
+	thing := ThingV2{
+		Logger: logger,
+	}
+	thing.DemoV7()
+	want := "error at some things"
+	got := sb.String()
+	if !strings.Contains(got, want) {
+		t.Errorf("Log = %q; want substing %q\n", got, want)
+	}
+}

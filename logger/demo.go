@@ -4,6 +4,7 @@ import (
 	"errors"
 	"log"
 	"os"
+	"sync"
 )
 
 func DemoV1() {
@@ -72,5 +73,30 @@ func DemoV6(logger Logger) {
 	if err != nil {
 		logger.Println("error in doSomeThings():", err)
 		logger.Printf("error: %v\n", err)
+	}
+}
+
+type ThingV2 struct {
+	Logger interface {
+		Println(...interface{})
+		Printf(string, ...interface{})
+	}
+	once sync.Once
+}
+
+func (t *ThingV2) logger() Logger {
+	t.once.Do(func() {
+		if t.Logger == nil {
+			t.Logger = log.New(os.Stdout, "", log.Ldate|log.Ltime)
+		}
+	})
+	return t.Logger
+}
+
+func (t *ThingV2) DemoV7() {
+	err := doSomeThings()
+	if err != nil {
+		t.logger().Println("error in doSomeThings():", err)
+		t.logger().Printf("error: %v\n", err)
 	}
 }
