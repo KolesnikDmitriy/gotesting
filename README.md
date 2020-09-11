@@ -12,3 +12,6 @@ to watch example
  
 ### logger
 logger is a package for demonstrating dependency injection
+
+### storage
+storage has method `Put`. `Put` receive a go test report and return error if exist
